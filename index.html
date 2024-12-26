@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明圣翡翠</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2d7a6f;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .top_img {
+        width: 100%;
+        height: auto;
+        }
+        .carousel {
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 20px;
+            background: #2d7a6f;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>明圣翡翠</h1>
+        <img src="top.jpg" alt="描述文字"  class=" top_img">
+    </header>
+
+    <!-- Carousel Section -->
+    <div class="carousel">
+        <div class="carousel-images" id="carousel-images">
+            <img src="img1.jpg" alt="翡翠图片1">
+            <img src="img2.jpg" alt="翡翠图片2">
+            <img src="img3.jpg" alt="翡翠图片3">
+        </div>
+        <div class="carousel-buttons">
+            <button id="prev-btn">&#8249;</button>
+            <button id="next-btn">&#8250;</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>欢迎来到明圣翡翠</h2>
+        <p>我们展示高品质的翡翠商品，传承经典与创新设计。</p>
+    </div>
+    <footer>
+        <p>版权所有 &copy; 2024 明圣翡翠</p>
+    </footer>
+
+    <script>
+        const carouselImages = document.getElementById('carousel-images');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // 每次移动一个图片的宽度
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : 2; // 循环到最后一个
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < 2) ? currentIndex + 1 : 0; // 循环到第一个
+            updateCarousel();
+        });
+
+        // 自动轮播功能
+        setInterval(() => {
+            nextBtn.click();
+        }, 3000); // 每3秒切换图片
+    </script>
+</body>
+</html>
